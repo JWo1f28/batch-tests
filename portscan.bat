@@ -59,7 +59,6 @@ if !_checkcounter! == %_counter% (
 for /f %%a in ('copy /Z "%~dpf0" nul') do set "CR=%%a"
 for /f %%a in ('"prompt $H&for %%b in (0) do rem"') do set "BS=%%a"
 <nul set /p"=!BS!!CR!!_checkcounter! / %_counter% COMPLETE"
-echo portscan-62: Update Counter >> log.txt
 goto checks
 
 :checkcomplete

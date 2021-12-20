@@ -10,5 +10,3 @@ File Breakdown:
 - pwget.bat - Fetches password for networks on the user's WLAN profile where possible
 - cleanup.bat - Deletes all .txt files (used for cache) from working directory
 - log.txt - Created by menu.bat, only file exempt from cleanup.bat (kinda)
-
-Testing VSCode Integration

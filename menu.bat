@@ -3,11 +3,10 @@
 ::Create Log
 del log.txt 2>nul
 copy nul log.txt 1>nul
-echo LOG START > log.txt
 
 ::Menu
 :menu
-echo :menu load start >> log.txt
+echo menu-9 : Log Start >> log.txt
 cls
 echo.
 echo.
@@ -24,43 +23,39 @@ echo  [5] -
 echo  [6] Clear Cached Data
 echo.
 echo  [Q] Exit
+echo menu-26: Menu Loaded >> log.txt
 
 ::Make Selection and apply it to %selection%
 set /p _selection=
-echo _selection change to %_selection% >> log.txt
+echo menu-30: Selection Made >> log.txt
 
 ::Goto Each Function Accordingly
 if %_selection%==1 (
-    echo call netscan.bat start >> log.txt
     rem Netscan
+    echo menu-35: Call Netscan >> log.txt
     call netscan.bat
 ) else if %_selection%==2 (
-    echo call portscan.bat start >> log.txt
     rem Portscan
+    echo menu-39: Call Portscan >> log.txt
     call portscan.bat
 ) else if %_selection%==3 (
-    echo call pwget.bat start >> log.txt
     rem Password Get
+    echo menu-43: Call PwGet >> log.txt
     call pwget.bat
 ) else if %_selection%==4 (
     goto menu
 ) else if %_selection%==5 (
     goto menu
 ) else if %_selection%==6 (
-    echo call cleanup.bat start>> log.txt
     rem cache clearing
     call cleanup.bat
     goto menu
 ) else if %_selection%==Q (
-    echo exit batch menu.bat >> log.txt
     exit /B
 ) else if %_selection%==q (
-    echo exit batch menu.bat >> log.txt
     exit /B
 ) else (
-    echo exception: return to :menu start >> log.txt
     goto menu
 )
 
-echo LOG_ESCP ERR, return to :menu start >> log.txt
 goto menu

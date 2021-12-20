@@ -74,4 +74,5 @@ if %_selection%==r (
     goto pwgetmenu
 )
 
+endlocal
 exit /b

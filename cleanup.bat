@@ -1,3 +1,3 @@
 @echo off
-del "%cd%\*.txt" /f /q 1>nul
+del "%cd%\*.txt" /f /q >nul
 exit /b

@@ -1,0 +1,3 @@
+- These probably dont work
+- If anything isnt my own, thats due to me looking for working code while learning. Sorry :/
+- menu.bat is the main file, but others should still work on their own

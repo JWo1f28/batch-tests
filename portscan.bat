@@ -38,23 +38,20 @@ echo portscan-37: Start one(1) scansub batch per item in ipadr.txt >> log.txt
 For /F "skip=1 tokens=1 delims= " %%a in (ipadr.txt) DO (
     start /min scansub.bat %%a
     set /a _counter+=1
-    echo portscan-41: Scansub started for %%a >> log.txt
 )
 
 cls
 echo SCANS COMPLETED:
 echo.
 
-echo portscan-48: Start Checking Loop >> log.txt
+echo portscan-47: Start Checking Loop >> log.txt
 :checks
 set _checkcounter=0
 for /F %%b in (checks.txt) DO (
     set /a _checkcounter+=1
-    echo portscan-53: Checking Escape Requirement Set >> log.txt
-)
 if !_checkcounter! == %_counter% (
     goto checkcomplete
-    echo portscan-57: Break Loop >> log.txt
+    echo portscan-54: Break Loop >> log.txt
 )
 for /f %%a in ('copy /Z "%~dpf0" nul') do set "CR=%%a"
 for /f %%a in ('"prompt $H&for %%b in (0) do rem"') do set "BS=%%a"
@@ -66,13 +63,13 @@ cls
 echo SCAN COMPLETE
 echo.
 echo THE FOLLOWING PORTS ARE OPEN
-echo portscan-70: Scan Concluded, Display Open Ports >> log.txt
+echo portscan-66: Scan Concluded, Display Open Ports >> log.txt
 for /F "tokens=*" %%c in (ports.txt) DO (
     echo %%c
 )
-echo portscan-74: Open Ports Printed >> log.txt
+echo portscan-70: Open Ports Printed >> log.txt
 
 pause
 endlocal
-echo portscan-78: Return to Menu >> log.txt
+echo portscan-74: Return to Menu >> log.txt
 exit /B

@@ -3,6 +3,7 @@
 ::Create Log
 del log.txt 2>nul
 copy nul log.txt 1>nul
+del replace.bat 2>nul
 
 ::Menu
 :menu

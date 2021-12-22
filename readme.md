@@ -11,5 +11,4 @@ File Breakdown:
 - cleanup.bat - Deletes all .txt files (used for cache) from working directory
 - log.txt - Created by menu.bat, only file exempt from cleanup.bat (kinda)
 
-Dont Worry about the commit History, was trying to understand how all this works
-:>
+Dont Worry about the commit History, was trying to understand how all this works :>

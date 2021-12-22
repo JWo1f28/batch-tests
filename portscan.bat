@@ -1,15 +1,10 @@
 @echo off
 echo portscan-2: Portscan Loaded >> log.txt
-
-::Portscan Function
 cls
 setlocal enableextensions enabledelayedexpansion
-
-::Variables
 set _counter=0
 set _checkcounter=0
 echo portscan-11: Vars Created >> log.txt
-
 echo -- PORTSCAN --
 echo This Function requires the previous
 echo use of NetScan (ID:1) to function
@@ -21,29 +16,22 @@ echo all IPs on your network after completing
 echo the "Netscan" function
 echo portscan-22: UI Printed >> log.txt
 pause
-
-::Files
 del checks.txt 2>>log.txt
 del ports.txt 2>>log.txt
 copy nul checks.txt 1>>log.txt
 copy nul ports.txt 1>>log.txt
 echo portscan-30: Checks and Ports Refreshed >> log.txt
-
-::Clear and Start Scan
 cls
 echo SCAN STARTING, PLEASE DO NOT
 echo CLOSE CMD WINDOWS THAT OPEN
-
 echo portscan-37: Start one(1) scansub batch per item in ipadr.txt >> log.txt
 For /F "skip=1 tokens=1 delims= " %%a in (ipadr.txt) DO (
     start /min scansub.bat %%a
     set /a _counter+=1
 )
-
 cls
 echo SCANS COMPLETED:
 echo.
-
 echo portscan-47: Start Checking Loop >> log.txt
 :checks
 set _checkcounter=0
@@ -57,7 +45,6 @@ for /f %%a in ('copy /Z "%~dpf0" nul') do set "CR=%%a"
 for /f %%a in ('"prompt $H&for %%b in (0) do rem"') do set "BS=%%a"
 <nul set /p"=!BS!!CR!!_checkcounter! / %_counter% COMPLETE"
 goto checks
-
 :checkcomplete
 cls
 echo SCAN COMPLETE
@@ -68,7 +55,6 @@ for /F "tokens=*" %%c in (ports.txt) DO (
     echo %%c
 )
 echo portscan-70: Open Ports Printed >> log.txt
-
 pause
 endlocal
 echo portscan-74: Return to Menu >> log.txt

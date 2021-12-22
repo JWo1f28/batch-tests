@@ -47,6 +47,7 @@ if %_selection%==1 (
 ) else if %_selection%==5 (
     rem Updater
     call update.bat
+    goto menu
 ) else if %_selection%==6 (
     rem cache clearing
     call cleanup.bat

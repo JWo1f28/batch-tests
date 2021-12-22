@@ -1,5 +1,9 @@
 @echo off
+
+::Delete Replace.bat after updates
 del replace.bat 2>nul
+
+::Menu Loop
 :menu
 cls
 echo.
@@ -18,6 +22,8 @@ echo  [6] Clear Cached Data
 echo.
 echo  [Q] Exit
 set /p _selection=
+
+::Selection Logic
 if %_selection%==1 (
     call netscan.bat
 ) else if %_selection%==2 (

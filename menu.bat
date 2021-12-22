@@ -45,15 +45,16 @@ if %_selection%==1 (
 ) else if %_selection%==4 (
     goto menu
 ) else if %_selection%==5 (
-    goto menu
+    rem Updater
+    call update.bat
 ) else if %_selection%==6 (
     rem cache clearing
     call cleanup.bat
     goto menu
 ) else if %_selection%==Q (
-    exit /B
+    exit
 ) else if %_selection%==q (
-    exit /B
+    exit
 ) else (
     goto menu
 )

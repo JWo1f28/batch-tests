@@ -1,7 +1,4 @@
 @echo off
-setlocal
-
-::Variables
 
 ::Refresh Files
 rmdir /S /Q temp 2>nul

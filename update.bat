@@ -17,6 +17,7 @@ echo @echo off >> replace.bat
 echo xcopy "%cd%/temp" "%cd%"  /Y /E /Q >> replace.bat
 echo start menu.bat >> replace.bat
 echo rmdir /S /Q temp >> replace.bat
+echo exit >> replace.bat
 
 ::Run Replacement Batch
 start replace.bat

@@ -19,7 +19,7 @@ echo  [1] Run Network Scan
 echo  [2] Run Portscan
 echo  [3] Obtain Current Network Password
 echo  [4] -
-echo  [5] -
+echo  [5] Run Updater
 echo  [6] Clear Cached Data
 echo.
 echo  [Q] Exit

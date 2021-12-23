@@ -21,6 +21,7 @@ echo  [5] Run Updater
 echo  [6] Clear Cached Data
 echo.
 echo  [Q] Exit
+echo.
 set /p _selection=
 
 ::Selection Logic

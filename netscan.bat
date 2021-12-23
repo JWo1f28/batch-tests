@@ -20,7 +20,6 @@ echo STARTING IPv4 NETWORK PROBE, THIS WILL TAKE A WHILE
 for /L %%a IN (0,1,255) DO (
     for /L %%b IN (0,1,255) DO (
         set _toping=%_domain%.%%a.%%b
-        echo netscan-25: Ping %_domain%.%%a.%%b >nul
         ping -n 1 !_toping! | find "TTL" >nul
         if not errorlevel 1 (
             nslookup !_toping! 2>&1 | find "Name" >nul

@@ -34,7 +34,7 @@ echo.
 echo STARTING SLAVE BATCHES
 
 for /L %%a in (0,1,255) do (
-    start /min netsub.bat %%a
+    start /min netsub.bat %_domain% %%a
 )
 
 ::Checking Loop

@@ -34,7 +34,6 @@ if %_selection%==1 (
     goto menu
 ) else if %_selection%==5 (
     call update.bat
-    goto menu
 ) else if %_selection%==6 (
     call cleanup.bat
 ) else if %_selection%==Q (

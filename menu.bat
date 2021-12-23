@@ -16,7 +16,7 @@ echo.
 echo  [1] Run Network Scan
 echo  [2] Run Portscan
 echo  [3] Obtain Current Network Password
-echo  [4] -
+echo  [4] Proto Fast NScan
 echo  [5] Run Updater
 echo  [6] Clear Cached Data
 echo.
@@ -32,7 +32,7 @@ if %_selection%==1 (
 ) else if %_selection%==3 (
     call pwget.bat
 ) else if %_selection%==4 (
-    goto menu
+    call fnscan.bat
 ) else if %_selection%==5 (
     call update.bat
 ) else if %_selection%==6 (

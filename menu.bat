@@ -26,10 +26,13 @@ set /p _selection=
 ::Selection Logic
 if %_selection%==1 (
     call netscan.bat
+    goto menu
 ) else if %_selection%==2 (
     call portscan.bat
+    goto menu
 ) else if %_selection%==3 (
     call pwget.bat
+    goto menu
 ) else if %_selection%==4 (
     goto menu
 ) else if %_selection%==5 (

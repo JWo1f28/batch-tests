@@ -14,6 +14,7 @@ for /F "tokens=5 skip=1" %%a in (wlanprof.txt) do (
     echo [!_counter!] - %%a
     set /a _counter += 1
 )
+echo.
 set /p _netsel=
 set _counter=0
 cls

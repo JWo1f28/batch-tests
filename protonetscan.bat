@@ -10,7 +10,6 @@ echo.
 ::Refresh domain.txt
 del domain.txt 2>nul
 copy nul domain.txt 1>nul
-copy nul protonscan.txt 1>nul
 
 ::Vars
 set _domain1=
@@ -34,8 +33,9 @@ echo.
 echo.
 echo STARTING SLAVE BATCHES
 
-for /L %%a in (0,1,255) do (
+for /L %%a in (0,1,1) do (
     start /min netsub.bat %_domain% %%a
+    copy nul %%a.txt 1>nul
 )
 
 ::Checking Loop
@@ -43,25 +43,28 @@ for /L %%a in (0,1,255) do (
 :loopstart
 
 set _checkcounter=0
-for /F %%a in (protonscan.txt) do (
-    set /a _checkcounter+=1
+for /L %%a in (0,1,1) do (
+    for /F %%b in (%%a.txt) do (
+        if %%b == DONE (
+            set /a _checkcounter+=1
+        )
+    )
 )
-if !_checkcounter! EQU 256 (
+cls
+echo !_checkcounter! / 2
+
+if !_checkcounter! == 2 (
     goto loopend
 )
-for /f %%a in ('copy /Z "%~dpf0" nul') do set "CR=%%a"
-for /f %%a in ('"prompt $H&for %%b in (0) do rem"') do set "BS=%%a"
-<nul set /p"=!BS!!CR!!_checkcounter!/256 COMPLETE"
 goto loopstart
 :loopend
-for /L %%a in (0,1,255) do (
-    for /F %%b in (%%a.txt) do (
-        echo %%b >> ipadr.txt
-        echo %%b
-    )
-    del %%a.txt 2>nul
-    pause
+for /L %%a in (0,1,1) do (
+    for /F "delims=|" %%b in (%%a.txt) do (
+        
+    ) 
 )
+
+
 pause
 endlocal
 exit /B

@@ -3,7 +3,6 @@ setlocal enabledelayedexpansion
 ::Netscan Slave Batch
 set _toping=%1.%2
 set _domname= 
-copy nul %2.txt 1>nul
 for /L %%a in (0,1,255) do (
     echo %_toping%.%%a
     ping -n 1 %_toping%.%%a | find "TTL" >nul
@@ -19,6 +18,6 @@ for /L %%a in (0,1,255) do (
         echo %_toping%.%%a - !_domname! >> %2.txt
     )
 )
-echo DONE >> protonscan.txt
+echo DONE >> %2.txt
 endlocal
 exit

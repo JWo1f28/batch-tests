@@ -16,6 +16,6 @@ Indev:
 - fnscan.bat - Functions as a secondary menu which will be collapsed into the current netscan selection
 - protonetscan.bat - WIP Fast Netscan, very buggy
 - netsub.bat - Slave batch for protonetscan.bat
-- test.nat - Just use it to test small sections of batch at a time
+- test.bat - Just use it to test small sections of batch at a time
 
 Dont Worry about the commit History, was trying to understand how all this works :>

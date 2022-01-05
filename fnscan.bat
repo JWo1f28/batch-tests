@@ -25,7 +25,7 @@ echo [1] Slow Netscan
 echo [2] Fast Netscan
 echo.
 echo.
-echo [Q]
+echo [Q] Quit
 echo.
 set /p _nsselection=
 

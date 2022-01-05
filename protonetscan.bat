@@ -1,6 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion
 
+::UI
 cls
 echo.
 echo.
@@ -10,6 +11,8 @@ echo.
 ::Refresh domain.txt
 del domain.txt 2>nul
 copy nul domain.txt 1>nul
+del ipadr.txt 2>nul
+copy nul ipadr.txt 1>nul
 
 ::Vars
 set _domain1=
@@ -30,6 +33,8 @@ for /F "tokens=13 delims= " %%a in ('ipconfig ^| find "Default"') do (
 )
 
 echo DOMAIN: %_domain%
+
+::Start Slave Batches
 echo.
 echo.
 echo STARTING SLAVE BATCHES
@@ -61,6 +66,8 @@ if !_checkcounter! == 256 (
 )
 goto loopstart
 :loopend
+
+::Complile and List all IP Adresses
 echo.
 for /L %%a in (0,1,255) do (
     for /F %%b in (%%a.txt) do (
@@ -74,9 +81,9 @@ for /L %%a in (0,1,255) do (
         )
         echo %%b - !_iptag!
         echo %%b - !_iptag! >> ipadr.txt
-        del %%a.txt 2>nul
-        del status%%a.txt 2>nul
     )
+    del %%a.txt 2>nul
+    del status%%a.txt 2>nul
 )
 
 

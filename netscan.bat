@@ -1,48 +1,45 @@
 @echo off
 
-::Prereq
-setlocal enabledelayedexpansion
-cls
+::THIS IS A PROTOTYPE FUNCTION
+::
+::THIS FUNCTION IS TO FUNCTION AS SUCH
+::
+::THE USER WILL BE OFFERED A CHOICE FOR EITHER FAST OR SLOW SCAN
+::A SLOW SCAN IS THE CURRENT NETSCAN FUNCTION
+::A FAST SCAN IS MEANT TO FUNCTION SIMILAR TO THE CURRENT PORTSCAN
+::A DOMAIN WILL BE FOUND VIA IPCONFIG
+::FOR EACH 3RD IP ADDRESS A SINGLE SLAVE BATCH WILL BE EXECUTED TO SCAN 256 ADDRESSES
+::EACH BATCH WILL REPORT TO A UNIQUE TEXT FILE ITS STATUS
+::THE MAIN BATCH WILL READ EACH ONE AND REPORT BACK TO THE USER
 
-::Vars
-Set _counter=0
-set _domain=192.168
-
-::Refresh ipadr.txt
-del ipadr.txt 2>nul
-copy nul ipadr.txt 1>nul
+:scanmenu
 
 ::UI
-echo --ONLINE IPv4 DEVICES-- >> ipadr.txt
-echo STARTING IPv4 NETWORK PROBE, THIS WILL TAKE A WHILE
 
-::Net Probe
-for /L %%a IN (0,1,255) DO (
-    for /L %%b IN (0,1,255) DO (
-        set _toping=%_domain%.%%a.%%b
-        ping -n 1 !_toping! | find "TTL" >nul
-        if not errorlevel 1 (
-            nslookup !_toping! 2>&1 | find "Name" >nul
-            if errorlevel 1 (
-                set _iptag=NO DOMAIN
-            ) else (
-                for /F "tokens=2 delims= " %%c in ('nslookup !_toping! ^| find "Name"') do (
-                    set _iptag=%%c
-                )
-            )
-            echo !_toping! - !_iptag! >> ipadr.txt
-        )
-        set /a _counter+=1
-        for /f %%f in ('copy /Z "%~dpf0" nul') do set "CR=%%f"
-        for /f %%f in ('"prompt $H&for %%g in (0) do rem"') do set "BS=%%f"
-        <nul set /p"=!BS!!CR!!_counter!/65536 TESTED"
-    )
+cls
+echo.
+echo.
+echo NETSCAN OPTIONS
+echo.
+echo [1] Slow Netscan
+echo [2] Fast Netscan
+echo.
+echo.
+echo [Q] Quit
+echo.
+set /p _nsselection=
+
+::Logic
+
+if %_nsselection%==1 (
+    call slnetscan.bat
+) else if %_nsselection%==2 (
+    call fanetscan.bat
+) else if %_nsselection%==Q (
+    exit /B
+) else if %_nsselection%==q (
+    exit /B
 )
 
-::Output
-cls
-echo SCAN COMPLETE, CONTINUE TO RETURN TO THE MENU
-
-pause
-endlocal
+goto scanmenu
 exit /B

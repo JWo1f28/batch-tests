@@ -21,7 +21,7 @@ cls
 echo SCAN STARTING, PLEASE DO NOT
 echo CLOSE CMD WINDOWS THAT OPEN
 For /F "skip=1 tokens=1 delims= " %%a in (ipadr.txt) DO (
-    start /min scansub.bat %%a
+    start /min portsub.bat %%a
     set /a _counter+=1
 )
 cls

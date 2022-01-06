@@ -69,6 +69,7 @@ goto loopstart
 
 ::Complile and List all IP Adresses
 echo.
+echo ONLINE IPv4 DEVICES > ipadr.txt
 for /L %%a in (0,1,255) do (
     for /F %%b in (%%a.txt) do (
         nslookup %%b 2>&1 | find "Name" >nul

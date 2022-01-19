@@ -5,8 +5,8 @@ menu.bat is the main file, but others should still work on their own
 File Breakdown:
 - menu.bat - Displays a UI to call each function
 - netscan.bat - Network Scan Menu
-    - slnetscan.bat - Slow Netscan, Pings each port one at a time
-    - fanetscan.bat - Fast Netscan, Pings 256 Ports at a time, More Resource Intensive
+    - slnetscan.bat - Slow Netscan, Pings each address one at a time
+    - fanetscan.bat - Fast Netscan, Pings 256 addresses at a time, More Resource Intensive
     - netsub.bat - Slave Batch for fanetscan.bat, pings 256 ports one a time each
 - portscan.bat - Uses the cache from netscan.bat to test via ftp if any ports are open on active devices
 - portsub.bat - Slave file for portscan.bat, starts minimised by default
